@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon lib/server.js",
-    "test": "node test/index.js && standard",
-    "run": "node lib/server.js"
+    "dev": "nodemon main.js",
+    "start": "node main.js",
+    "test": "node test/index.js && standard"
   },
   "keywords": [],
   "author": "David Guttman <david@guttman.io> (http://davidguttman.com/)",
@@ -19,7 +19,9 @@
     "tape": "^4.6.3"
   },
   "dependencies": {
-    "redis": "2.7.1"
+    "http-hash-router": "^2.0.1",
+    "redis": "2.7.1",
+    "send-data": "^8.0.0"
   },
   "directories": {
     "test": "test"
