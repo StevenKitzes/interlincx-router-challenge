@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "node test/index.js && standard"
+    "dev": "nodemon lib/server.js",
+    "test": "node test/index.js && standard",
+    "run": "node lib/server.js"
   },
   "keywords": [],
   "author": "David Guttman <david@guttman.io> (http://davidguttman.com/)",
@@ -12,6 +14,7 @@
     "dg-servertest": "^1.2.2",
     "fakeredis": "^2.0.0",
     "map-limit": "0.0.1",
+    "nodemon": "^1.19.4",
     "standard": "^8.6.0",
     "tape": "^4.6.3"
   },
