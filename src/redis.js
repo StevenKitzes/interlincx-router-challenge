@@ -3,7 +3,8 @@ var redis = process.env.NODE_ENV === 'test'
   : require('redis')
 
 module.exports = {
-  setBuyer
+  setBuyer,
+  getBuyer
 }
 
 const client = redis.createClient()
@@ -27,4 +28,24 @@ function setBuyer (buyer, cb) {
     console.log('Exception caught in Redis setBuyer')
     cb(exception)
   }
+}
+
+function getBuyer (id, cb) {
+  client.exists(id, (err, exists) => {
+    if (err) cb(err)
+
+    if (!exists) {
+      cb('not found')
+      return
+    }
+
+    client.lrange(id, 0, -1, (err, results) => {
+      if (err) cb(err)
+      const buyer = {
+        id,
+        offers: results.map(result => JSON.parse(result))
+      }
+      cb(null, buyer)
+    })
+  })
 }
